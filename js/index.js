@@ -10,7 +10,7 @@ localforage.keys()
 		repos.forEach((el) => {
 			let li = $("<li></li>");
 			let a = $("<a></a>");
-			a.attr("href", `/repo.html#${el}`);
+			a.attr("href", `./repo.html#${el}`);
 			let div = $("<div></div>");
 			div.text(el);
 			a.append(div);
@@ -26,11 +26,13 @@ $("#form").submit((event) => {
 	event.preventDefault();
 
 	let repo = $("#repo").val();
+	console.log(repo);
 	let branch = $("#branch").val();
+	console.log(branch);
 
 	localforage.setItem(`${repo}/${branch}`, {})
 		.then(() => {
-			window.location.href = `/repo.html#${repo}/${branch}`;
+			window.location.href = `./repo.html#${repo}/${branch}`;
 		})
 		.catch((e) => {
 			throw e;
